@@ -2,14 +2,24 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
-    <nav className="bg-gray-900 text-gray-900 w-[100vw] h-[10vh] flex justify-between items-center">
-      <div className="text-xl font-bold">Obsidian</div>
-      <ul className="flex gap-6">
-        <li><Link to="/" className="hover:text-gray-300 text-white">Home</Link></li>
-        <li><Link to="/products" className="hover:text-gray-300">Products</Link></li>
-        <li><Link to="/cart" className="hover:text-gray-300">Cart</Link></li>
-        <li><Link to="/login" className="hover:text-gray-300">Login</Link></li>
-      </ul>
+    <nav className="bg-gray-900 text-white w-full h-[8vh] sm:h-[10vh] px-4 sm:px-6 relative">
+      <div className="flex items-center justify-between h-full ">
+        {/* Start: Hamburger Menu */}
+        <div className="flex items-center">
+          <button className="text-2xl hover:text-gray-300">☰</button>
+        </div>
+
+        {/* Center: Logo */}
+        <div className="absolute left-1/2 -translate-x-1/2 text-2xl sm:text-3xl font-bold">
+          Obsidian
+        </div>
+
+        {/* End: Search and Cart */}
+        <div className="flex items-center gap-4">
+          <button className="text-xl hover:text-gray-300">🔍</button>
+          <Link to="/cart" className="text-xl hover:text-gray-300">🛒</Link>
+        </div>
+      </div>
     </nav>
   );
 }

@@ -11,9 +11,9 @@
 3. **Minimal Breakpoints**
    Stick to essential breakpoints only:
 
-   * Phone: 320px to 600px
-   * Tablet: 600px to 1024px
-   * Desktop: 1024px to 1440px
+   `Phone: "sm" = ~640px`
+   `Tablet: "md" = ~1024px`
+   `Desktop: "lg" = ~1440px`
 
 4. **Use Flexbox or CSS Grid**
    Enables automatic alignment and prevents messy or broken layouts.
