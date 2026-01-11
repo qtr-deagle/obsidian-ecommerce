@@ -1,4 +1,13 @@
+import { useState } from 'react';
+import AccountProfile from './AccountProfile';
+import AccountOrders from './AccountOrders';
+import EditProfile from './EditProfile';
+import ChangePassword from './ChangePassword';
+
 export default function Account() {
+  const [view, setView] = useState('profile'); // profile, orders, edit, password
+  const [loading, setLoading] = useState(false);
+  
   // TODO: Fetch user data from backend
   const user = {
     name: 'John Doe',
@@ -6,39 +15,59 @@ export default function Account() {
     role: 'customer'
   };
 
+  const handleEditProfile = async (formData) => {
+    setLoading(true);
+    // TODO: Send to backend
+    setTimeout(() => {
+      alert('Profile updated successfully!');
+      setLoading(false);
+      setView('profile');
+    }, 1000);
+  };
+
+  const handleChangePassword = async (formData) => {
+    setLoading(true);
+    // TODO: Send to backend
+    setTimeout(() => {
+      alert('Password changed successfully!');
+      setLoading(false);
+      setView('profile');
+    }, 1000);
+  };
+
+  const handleEditClick = (section) => {
+    setView(section);
+  };
+
+  const handleCancel = () => {
+    setView('profile');
+  };
+
   return (
     <div className="min-h-screen bg-white px-6 py-12">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl font-bold text-black mb-8">My Account</h1>
-        
-        <div className="bg-gray-100 rounded-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-black mb-6">Profile Information</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="text-gray-600 text-sm">Name</p>
-              <p className="text-black font-semibold text-lg">{user.name}</p>
-            </div>
-            
-            <div>
-              <p className="text-gray-600 text-sm">Email</p>
-              <p className="text-black font-semibold text-lg">{user.email}</p>
-            </div>
-            
-            <div>
-              <p className="text-gray-600 text-sm">Account Type</p>
-              <p className="text-black font-semibold text-lg capitalize">{user.role}</p>
-            </div>
-          </div>
-
-          <button className="mt-8 bg-black text-white font-semibold py-2 px-6 rounded-lg hover:bg-gray-800 transition">
-            Edit Profile
-          </button>
-        </div>
-
-        <div className="bg-gray-100 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-black mb-6">My Orders</h2>
-          <p className="text-gray-700">You haven't placed any orders yet.</p>
+      <div className="w-full max-w-2xl mx-auto">
+        <div className="max-w-md mx-auto">
+          {view === 'profile' && (
+            <AccountProfile user={user} onEdit={handleEditClick} loading={loading} />
+          )}
+          {view === 'orders' && (
+            <AccountOrders user={user} />
+          )}
+          {view === 'edit' && (
+            <EditProfile
+              user={user}
+              onSave={handleEditProfile}
+              onCancel={handleCancel}
+              loading={loading}
+            />
+          )}
+          {view === 'password' && (
+            <ChangePassword
+              onSave={handleChangePassword}
+              onCancel={handleCancel}
+              loading={loading}
+            />
+          )}
         </div>
       </div>
     </div>

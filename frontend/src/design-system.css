@@ -1,0 +1,170 @@
+/* ============================================
+   DESIGN SYSTEM - CSS CUSTOM PROPERTIES
+   ============================================ */
+
+:root {
+  /* ========== TYPOGRAPHY ========== */
+  
+  /* Font Family */
+  --font-primary: 'Smooch Sans', sans-serif;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  
+  /* Heading Sizes */
+  --heading-h1: 2.25rem;   /* 36px */
+  --heading-h2: 1.875rem;  /* 30px */
+  --heading-h3: 1.5rem;    /* 24px */
+  --heading-subheading: 1.125rem; /* 18px */
+  --heading-paragraph: 1rem;      /* 16px */
+  --heading-small-text: 0.875rem; /* 14px */
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* ========== COLORS ========== */
+  
+  /* Primary Colors */
+  --color-primary: #273c75;      /* Button Color - Dark Blue */
+  --color-secondary: #000000;    /* Black */
+  --color-tertiary: #ffffff;     /* White */
+  
+  /* Neutral Colors */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  
+  /* Gray Scale */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  /* Semantic Colors */
+  --color-success: #10b981;      /* Green */
+  --color-warning: #f59e0b;      /* Orange */
+  --color-error: #ef4444;        /* Red */
+  --color-info: #3b82f6;         /* Light Blue */
+  
+  /* ========== BUTTONS ========== */
+  
+  /* Button Sizes */
+  --button-height-sm: 2.5rem;    /* 40px */
+  --button-height-md: 3rem;      /* 48px */
+  --button-height-lg: 3.5rem;    /* 56px */
+  
+  --button-padding-x-sm: 0.75rem;   /* 12px */
+  --button-padding-x-md: 1rem;      /* 16px */
+  --button-padding-x-lg: 1.5rem;    /* 24px */
+  
+  --button-border-radius: 9999px;   /* Full rounded */
+  --button-border-width: 2px;
+  
+  /* ========== SPACING ========== */
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 1rem;       /* 16px */
+  --spacing-lg: 1.5rem;     /* 24px */
+  --spacing-xl: 2rem;       /* 32px */
+  --spacing-2xl: 2.5rem;    /* 40px */
+  --spacing-3xl: 3rem;      /* 48px */
+  --spacing-4xl: 4rem;      /* 64px */
+  
+  /* ========== BORDERS ========== */
+  
+  --border-width-sm: 1px;
+  --border-width-md: 2px;
+  --border-width-lg: 3px;
+  
+  --border-radius-sm: 0.375rem;   /* 6px */
+  --border-radius-md: 0.5rem;     /* 8px */
+  --border-radius-lg: 1rem;       /* 16px */
+  --border-radius-full: 9999px;   /* Full rounded */
+  
+  /* ========== SHADOWS ========== */
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  /* ========== TRANSITIONS ========== */
+  
+  --transition-fast: 150ms;
+  --transition-base: 250ms;
+  --transition-slow: 350ms;
+  
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   COMPONENT-SPECIFIC VARIABLES
+   ============================================ */
+
+/* PRIMARY BUTTON */
+:root {
+  --btn-primary-bg: var(--color-primary);      /* #273c75 Dark Blue */
+  --btn-primary-text: var(--color-white);      /* White text */
+  --btn-primary-hover-bg: #1f2d4f;             /* Darker blue on hover */
+  --btn-primary-disabled-opacity: 0.5;
+}
+
+/* SECONDARY BUTTON */
+:root {
+  --btn-secondary-bg: transparent;
+  --btn-secondary-border: var(--color-black);
+  --btn-secondary-text: var(--color-black);
+  --btn-secondary-hover-bg: var(--color-black);
+  --btn-secondary-hover-text: var(--color-white);
+}
+
+/* TERTIARY BUTTON (LINK STYLE) */
+:root {
+  --btn-tertiary-text: var(--color-primary);      /* #273c75 */
+  --btn-tertiary-text-hover: var(--color-black);
+}
+
+/* INPUT FIELDS */
+:root {
+  --input-border: var(--color-gray-300);
+  --input-focus-border: var(--color-primary);
+  --input-text: var(--color-black);
+  --input-placeholder: var(--color-gray-400);
+  --input-bg: var(--color-white);
+}
+
+/* CARDS & CONTAINERS */
+:root {
+  --card-bg: var(--color-gray-100);
+  --card-border: var(--color-gray-200);
+  --card-border-radius: var(--border-radius-lg);
+}
+
+/* TEXT COLORS */
+:root {
+  --text-primary: var(--color-black);
+  --text-secondary: var(--color-gray-600);
+  --text-tertiary: var(--color-gray-500);
+}

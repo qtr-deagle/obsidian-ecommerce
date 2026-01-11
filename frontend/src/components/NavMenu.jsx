@@ -2,14 +2,19 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NavMenu({ isOpen, onClose }) {
-  const [openShop, setOpenShop] = useState(false);
+  const mainCategories = [
+    { name: 'New & Featured', path: '/products/new' },
+    { name: 'Men', path: '/products/men' },
+    { name: 'Women', path: '/products/women' },
+    { name: 'Kids', path: '/products/kids' },
+    { name: 'Sale', path: '/products/sale' },
+  ];
 
-  const categories = [
-    { name: 'All Products', path: '/products' },
-    { name: 'Shoes', path: '/products/shoes' },
-    { name: 'T-Shirts', path: '/products/tshirts' },
-    { name: 'Hoodies', path: '/products/hoodies' },
-    { name: 'Accessories', path: '/products/accessories' },
+  const utilityItems = [
+    { icon: 'help', label: 'Help', path: '/help' },
+    { icon: 'shopping_bag', label: 'Bag', path: '/cart' },
+    { icon: 'calendar_month', label: 'Orders', path: '/orders' },
+    { icon: 'store', label: 'Find a Store', path: '/stores' },
   ];
 
   const handleLinkClick = () => {
@@ -18,73 +23,81 @@ export default function NavMenu({ isOpen, onClose }) {
 
   return (
     <>
-      {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden" onClick={onClose}></div>
-      )}
+      <div
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
+          isOpen 
+            ? 'bg-black bg-opacity-50 opacity-100 pointer-events-auto' 
+            : 'bg-black bg-opacity-0 opacity-0 pointer-events-none delay-300'
+        }`}
+        onClick={onClose}
+      ></div>
 
-      <div className={`fixed top-[-8px] left-0 h-screen w-full bg-white z-50 md:hidden transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="px-6 py-6">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold text-black">Menu</h2>
-            <button onClick={onClose} className="text-2xl text-gray-800 hover:text-gray-600">
+      <div className={`fixed top-0 right-0 h-screen w-[320px] bg-white z-50 md:hidden transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex flex-col h-full">
+          {/* Header */}
+          <div className="flex justify-between items-center px-6 py-[11px]">
+            <h2 className="text-3xl font-bold text-black">Menu</h2>
+            <button onClick={onClose} className="text-2xl text-black hover:text-gray-600 flex justify-between items-center">
               <span className="material-symbols-rounded">close</span>
             </button>
           </div>
 
-          <nav className="space-y-4">
-            {/* Shop Section */}
+          {/* Scrollable Content */}
+          <div className="flex-1 overflow-y-auto pt-6 pb-[150px]">
+            {/* Main Categories */}
+            <nav>
+              {mainCategories.map((category) => (
+                <Link
+                  key={category.path}
+                  to={category.path}
+                  onClick={handleLinkClick}
+                  className="flex justify-between items-center px-6 py-2 text-3xl font-medium text-black hover:bg-gray-50"
+                >
+                  <span>{category.name}</span>
+                  <span className="material-symbols-rounded text-3xl">chevron_right</span>
+                </Link>
+              ))}
+            </nav>
+
+            {/* Membership Section */}
+            <div className="px-6 py-8 ">
+              <p className="text-xl text-gray-600 mb-4 leading-relaxed">
+                Become a Member for the best products, inspiration and stories in sport.{' '}
+                <Link to="/membership" onClick={handleLinkClick} className="text-black font-semibold hover:underline">
+                  Learn more
+                </Link>
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={handleLinkClick}
+                  className="flex-1 bg-black text-white font-semibold py-3 rounded-full hover:bg-opacity-90 transition text-xl"
+                >
+                  <Link to="/register">Join Us</Link>
+                </button>
+                <button
+                  onClick={handleLinkClick}
+                  className="flex-1 border-2 border-black text-black font-semibold py-3 rounded-full hover:bg-black hover:text-white transition text-xl"
+                >
+                  <Link to="/login">Sign In</Link>
+                </button>
+              </div>
+            </div>
+
+            {/* Utility Items */}
             <div>
-              <button
-                onClick={() => setOpenShop(!openShop)}
-                className="w-full flex justify-between items-center py-3 text-lg font-semibold text-black hover:text-gray-600"
-              >
-                <span>Shop</span>
-                <span className={`material-symbols-rounded transition-transform ${openShop ? 'rotate-180' : ''}`}>
-                  expand_more
-                </span>
-              </button>
-              {openShop && (
-                <div className="pl-4 space-y-2">
-                  {categories.map((cat) => (
-                    <Link
-                      key={cat.path}
-                      to={cat.path}
-                      onClick={handleLinkClick}
-                      className="block py-2 text-gray-700 hover:text-black font-medium"
-                    >
-                      {cat.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              {utilityItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={handleLinkClick}
+                  className="flex items-center gap-4 px-6 py-2 text-xl font-semibold text-black hover:bg-gray-50"
+                >
+                  <span className="material-symbols-rounded font-light text-3xl">{item.icon}</span>
+                  <span>{item.label}</span>
+                </Link>
+              ))}
             </div>
-
-            {/* Other Menu Items */}
-            <Link to="/about" onClick={handleLinkClick} className="block py-3 text-lg font-semibold text-black hover:text-gray-600">
-              About
-            </Link>
-
-            <Link to="/contact" onClick={handleLinkClick} className="block py-3 text-lg font-semibold text-black hover:text-gray-600">
-              Contact
-            </Link>
-
-            <Link to="/sell" onClick={handleLinkClick} className="block py-3 text-lg font-semibold text-black hover:text-gray-600">
-              Sell With Us
-            </Link>
-
-            {/* Account Section */}
-            <div className="pt-6 border-t border-gray-300 space-y-3">
-              <Link to="/login" onClick={handleLinkClick} className="block py-3 text-lg font-semibold text-black hover:text-gray-600">
-                Login
-              </Link>
-              <Link to="/register" onClick={handleLinkClick} className="block py-3 text-lg font-semibold text-black hover:text-gray-600">
-                Register
-              </Link>
-              <Link to="/account" onClick={handleLinkClick} className="block py-3 text-lg font-semibold text-black hover:text-gray-600">
-                My Account
-              </Link>
-            </div>
-          </nav>
+          </div>
         </div>
       </div>
     </>
