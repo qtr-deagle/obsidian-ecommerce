@@ -36,9 +36,12 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-white px-6 py-12 flex items-center justify-center">
+    <div className="h-screen bg-white px-9 pb-40 flex flex-col items-center justify-center overflow-hidden">
       <div className="w-full max-w-2xl">
         <div className="max-w-md mx-auto">
+          <div className="mb-8">
+            <h2 className="text-4xl font-bold text-black">Obsidian</h2>
+          </div>
           {step === 'email' && (
             <EmailStep onContinue={handleEmailSubmit} loading={loading} />
           )}

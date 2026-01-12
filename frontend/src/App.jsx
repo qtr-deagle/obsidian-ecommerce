@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -13,7 +13,18 @@ import Sell from './pages/Sell';
 export default function App() {
   return (
     <Router>
-      <Navbar />
+      <AppContent />
+    </Router>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  const isAuthPage = ['/login', '/register'].includes(location.pathname);
+
+  return (
+    <>
+      {!isAuthPage && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -26,6 +37,6 @@ export default function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/sell" element={<Sell />} />
       </Routes>
-    </Router>
+    </>
   );
 }
