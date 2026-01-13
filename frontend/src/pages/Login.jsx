@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import EmailStep from './EmailStep';
 import VerificationStep from './VerificationStep';
@@ -40,7 +41,9 @@ export default function Login() {
       <div className="w-full max-w-2xl">
         <div className="max-w-md mx-auto">
           <div className="mb-8">
-            <h2 className="text-4xl font-bold text-black">Obsidian</h2>
+            <Link to="/" className="text-4xl font-bold text-black">
+              Obsidian
+            </Link>
           </div>
           {step === 'email' && (
             <EmailStep onContinue={handleEmailSubmit} loading={loading} />
