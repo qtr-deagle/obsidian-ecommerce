@@ -64,7 +64,7 @@ export default function Navbar({ isScrolled = false }) {
             {/* Search - Icon only on mobile/tablet, full bar on desktop */}
             <li className="hidden lg:flex">
               <button onClick={() => setShowSearch(true)} className={`flex items-center gap-1 px-3 py-1 rounded-full duration-300 ease-in transition-colors w-44 ${isScrolled ? 'bg-gray-200 hover:bg-gray-300' : 'bg-white/20 hover:bg-white/30'}`}>
-                <span className={`absolute material-symbols-rounded text-2xl ${isScrolled ? 'text-gray-700' : 'text-white'}`}>search</span>
+                <span className={`absolute material-symbols-rounded text-2xl ${isScrolled ? 'text-black' : 'text-white'}`}>search</span>
                 <span className={`font-medium text-xl ml-7 ${isScrolled ? 'text-gray-500' : 'text-white/80'}`}>Search</span>
               </button>
             </li>
