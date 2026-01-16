@@ -104,7 +104,7 @@ export default function NavMenu({ isOpen, onClose }) {
   return (
     <>
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-200 ${
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-200 ${
           isOpen 
             ? 'bg-black bg-opacity-50 opacity-100 pointer-events-auto' 
             : 'bg-black bg-opacity-0 opacity-0 pointer-events-none delay-200'
@@ -112,7 +112,7 @@ export default function NavMenu({ isOpen, onClose }) {
         onClick={onClose}
       ></div>
 
-      <div className={`fixed top-0 right-0 h-screen w-[320px] bg-white z-50 md:hidden transition-transform duration-200 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 h-screen w-[320px] bg-white z-50 lg:hidden transition-transform duration-200 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex flex-col h-full overflow-hidden">
           {/* Main Menu */}
           <div className={`flex flex-col h-full transition-transform duration-200 transform ${activeSubmenu ? '-translate-x-full' : 'translate-x-0'}`}>
