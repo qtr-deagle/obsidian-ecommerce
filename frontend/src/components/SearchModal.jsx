@@ -30,6 +30,8 @@ export default function SearchModal({ isOpen, onClose }) {
                         <div className="flex-1 bg-gray-200 rounded-full flex items-center px-4 py-1.5">
                             <span className="material-symbols-rounded text-gray-800 mr-2">search</span>
                             <input
+                                id="mobile-search"
+                                name="search"
                                 type="text"
                                 placeholder="Search"
                                 className="bg-gray-200 text-black text-xl font-bold focus:outline-none flex-1 placeholder-gray-500"
@@ -81,6 +83,8 @@ export default function SearchModal({ isOpen, onClose }) {
                         <div className="w-1/2 bg-gray-200 rounded-full flex items-center px-3 py-1.5">
                             <span className="material-symbols-rounded text-gray-800 mr-2">search</span>
                             <input
+                                id="desktop-search"
+                                name="search"
                                 type="text"
                                 placeholder="Search"
                                 className="bg-gray-200 text-black text-xl font-bold focus:outline-none flex-1 placeholder-gray-500"
